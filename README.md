@@ -74,7 +74,7 @@ Having simulated, for a given RS, a large number of calls, I then record the mea
 
 Running Monte Carlo simulations over a large number of values for relative strength (from 0 to 1, going up in intervals of 0.001) reveals the relationship between the average number of points scored by government teams and the proportion of bench calls, provided that the folk wisdom is true (blue line in figure below).
 
-[figure[
+![RS diagram](https://github.com/tanaerao/bench-calls/blob/main/bench-calls-figure-1.png)
 
 In theory, we should expect the proportion of expected bench calls to be 100% when RS = 0, because the two opposition teams will always beat the two government teams. We should also expect 100% bench calls when RS = 1, by the same logic. Finally, the curve should have a global minimum at 1/3 bench calls and 1.5 average government points (which represents a completely unbiased motion; RS = 0.5). This is roughly what we see in the blue line, noting that there is some imprecision because the blue line is a fit to the results of a random simulation.
 
