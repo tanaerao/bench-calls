@@ -22,8 +22,8 @@ for (sheet in 1:length(excel_sheets('motion-balance-dataset.xlsx'))) {
 
 #read tables of simulated relative strength data
 #files included in Github repo; produced by running:
-#rs_govpoints -> simulate_rs_govpoints(10000,1001)
-#rs_benchcalls <- simulate_rs_benchcalls(10000,1001)
+#rs <- simulate_rs(10000,1001)
+
 rs <- read.csv('relative_strength.csv')
 rsfit <- lm(benchcalls ~ poly(govpoints,10,raw=TRUE),data=rs)
 
