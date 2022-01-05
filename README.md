@@ -1,6 +1,6 @@
 # Frequency of bench calls in British Parliamentary debating
 
-**Summary:** Using data from WUDC 2020 and WUDC 2021, I show that bench calls are disproportionately common; despite representing only 1/3 of possible calls, they are given 40.7% of the time (95% confidence interval: \[0.38,0.43]). One popular explanation for this is that motions are sometimes biased in favour of one bench, hence resulting in a large number of bench calls. I demonstrate, using a model, that even the most extreme observations of motion bias would not result in as high a frequency of bench calls as present in the data. This puts pressure on the folk wisdom that the ranking between any two teams is unaffected by the performance of other teams in the round.
+**Summary:** Using data from WUDC 2020 and WUDC 2021, I show that bench calls are disproportionately common. Despite representing only 1/3 of possible calls, they are given 40.7% of the time (95% confidence interval: \[0.38,0.43]). One popular explanation for this is that motions are sometimes biased in favour of one bench, hence resulting in a large number of bench calls. I demonstrate, using a model, that even the most extreme observations of motion bias would not result in as high a frequency of bench calls as present in the data. This puts pressure on the folk wisdom that the ranking between any two teams is unaffected by the performance of other teams in the round.
 
 ***
 
@@ -20,7 +20,7 @@ Bench calls are ordinal rankings of the four teams in a British Parliamentary (B
 
 One piece of folk wisdom about BP debating is that the ranking between any pair of teams is unaffected by the arguments and rebuttal delivered by other teams in the debate. For example, if Opening Opposition beats Closing Government (as is the case in Call B), then this would hold true regardless of the arguments which might have counterfactually been delivered by Opening Government and Closing Opposition.
 
-If this is true, it may suggest that approximately 1/3 of debates should result in bench calls (as they constitute 8 of the 24 possible orderings of the four teams). However, evidence from the World University Debating Championships in 2020 and 2021 suggests that bench calls are disproportionately common. This analysis of the results of 1617 debates across 18 distinct rounds finds sufficient evidence to reject the null hypothesis that the true probability of a bench call is 1/3 or lower, with p in the order of magnitude of 10^-10. With 95% confidence, 38.3-41.2% of debates result in bench calls.
+If this is true, it may suggest that approximately 1/3 of debates should result in bench calls (as they constitute 8 of the 24 possible orderings of the four teams).[^1] However, evidence from the World University Debating Championships in 2020 and 2021 suggests that bench calls are disproportionately common. This analysis of the results of 1617 debates across 18 distinct rounds finds sufficient evidence to reject the null hypothesis that the true probability of a bench call is 1/3 or lower, with p in the order of magnitude of 10^-10. With 95% confidence, 38.3-41.2% of debates result in bench calls.
 
 <dl>
   <table style="text-align:center"><caption><strong>Inrounds bench call frequency; WUDC 2020 & WUDC 2021</strong></caption>
@@ -46,9 +46,11 @@ If this is true, it may suggest that approximately 1/3 of debates should result 
 <tr><td colspan="6" style="border-bottom: 1px solid black"></td></tr></table>
   </dl>
 
-One explanation for this result--an explanation which would allow us to continue believing the folk wisdom--is that some debate motions (the topic of the debate, which is different for every round) are easier for teams on one bench than the other. I will refer to this using the term 'motion bias'.[^1] Consider a motion where it is much easier to come up with compelling arguments for the government bench than for the opposition. We might expect the results of that round to include a larger-than-usual number of bench calls, where the government teams take the 1st and 2nd.
+One explanation for this result--an explanation which would allow us to continue believing the folk wisdom--is that some debate motions (the topic of the debate, which is different for every round) are easier for teams on one bench than the other. I will refer to this using the term 'motion bias'.[^2] Consider a motion where it is much easier to come up with compelling arguments for the government bench than for the opposition. We might expect the results of that round to include a larger-than-usual number of bench calls, where the government teams take the 1st and 2nd.
 
 By constructing what I'll call the relative strength model (RS), I show that motion bias accounts for little--if anything at all--of the high frequency of bench calls. The **relative strength** of the government bench over the opposition bench is the probability that a government team would beat an opposition team in a one-on-one debate. To be clear, this relative strength metric is entirely fictious; it is a construct not meant to resemble any actual feature of BP debating.
+
+The question I am trying to answer with this model is 'what is the probability of a bench call, given no information other than the expected points won by government teams, and assuming that the ranking between any pair of teams is independent of the performance of a third?'.[^3]
 
 To simulate a round of debate, the model assigns a performance score to the team in each position, where *RS* is an exogenous and between 0 and 1 (because it is a probability).
 
@@ -60,9 +62,7 @@ To simulate a round of debate, the model assigns a performance score to the team
 
 *Performance<sub>CO</sub> ~ N(0,1<sup>2</sup>)*
 
-RS is consistent with the folk wisdom because whether or not one number is greater than another is clearly independent of the value of some third number. The model is intended to evaluate the hypothesis that motion bias in and of itself (i.e., in an otherwise completely random set of calls) can cause increased proportion of bench calls of sufficient magnitude to fully explain the empirical observations.
-
-The performance scores of each team are then ranked from greatest to least. As per the usual scoring system in BP debating, the first ranked team receives 3 points, the second ranked team receives 2 points, the third ranked team receives 1 point, and the last ranked team receives 0 points.
+The performance scores of each team are then ranked from greatest to least. As per the usual scoring system in BP debating, the first ranked team receives 3 points, the second ranked team receives 2 points, the third ranked team receives 1 point, and the last ranked team receives 0 points. The folk wisdom is met in this model, because whether or not A > B is clearly independent of C, where A, B, and C are normally distributed random variables with constant mean and variance.
 
 Having simulated, for a given RS, a large number of calls, I then record the mean points won by government teams, and the proportion of bench calls. For example, Call C is not a bench call, and the government teams win an average of 1.5 points. 
 
@@ -88,4 +88,6 @@ The evidence implies that bench calls are more probable than 1/3, and that motio
 
 If people want to evaluate the proportion of bench calls in other tournaments, they can add additional sheets to the excel file included in this GitHub repo, then run the code. Each sheet should contain the copy-pasted tournament data, arranged by team, of one round of debate. The sheet must be given a unique name. Some tournament sites allow you to copy-paste the table by clicking a button; I don't know how to get the data in a convenient format for tournaments that don't allow this. The data does not have to be ordered by room, or by team position. I've also included the results of the RS model simulation in the repo, so that the (time-intensive) simulation doesn't have to be repeated for every new session.
 
-[^1]: Note that I am using the term 'motion bias' in reference solely to motions that are easier on government or on opposition, rather than in reference to--for instance--motions that are easier on opening than on closing.
+[^1]: This obviously holds true for rounds in which the expected points won in any position is 1.5. It also holds true for rounds in which any one team receives a higher expected number of points. If two teams across a diagonal (e.g., Opening Government and Closing Opposition) receive a higher expected number of points, then we would expect fewer than 1/3 bench calls. The same is true of the two teams in opening or closing. However, when two teams on the same bench receive a higher expected number of points, we would expect more than 1/3 bench calls; this is the possibility examined in the RS model.
+[^2]: Note that I am using the term 'motion bias' in reference solely to motions that are easier on government or on opposition, rather than in reference to--for instance--motions that are easier on opening than on closing.
+[^3]: Two things to note here. First, I am assuming that the observed mean points won by government teams in the round is equal to the expected number of points won. This is a charitable assumption that implies more motion bias than there actually is; if all motions were completely unbiased, teams would nonetheless win somewhat more or less than 1.5 points per round, because of randomness. Second, RS is *one* way of generating a plausibly random distribution of calls where government teams average a certain number of points per round. There are perhaps other methods of doing this, which would generate different results (see: Bertrand's Paradox). 
