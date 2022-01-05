@@ -1,6 +1,6 @@
 # Frequency of bench calls in British Parliamentary debating
 
-**Summary:** Using data from WUDC 2020 and WUDC 2021, I show that bench calls are disproportionately common. Despite representing only 1/3 of possible calls, they are given 40.7% of the time (95% confidence interval: \[0.38,0.43]). One popular explanation for this is that motions are sometimes biased in favour of one bench, hence resulting in a large number of bench calls. I demonstrate, using a model, that even the most extreme observations of motion bias would not result in as high a frequency of bench calls as present in the data. This puts pressure on the folk wisdom that the ranking between any two teams is unaffected by the performance of other teams in the round.
+**Summary:** Using data from WUDC 2020 and WUDC 2021, I show that bench calls are disproportionately common. Despite representing only 1/3 of possible calls, they are given 40.7% of the time (95% confidence interval: \[0.38,0.43]). One popular explanation for this is that motions are sometimes biased in favour of one bench, hence resulting in a large number of bench calls. I demonstrate, using a model, that even the most extreme observations of motion bias would not result in as high a frequency of bench calls as is present in the data. This puts pressure on the folk wisdom that the ranking between any two teams is unaffected by the performance of other teams in the round.
 
 ***
 
