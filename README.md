@@ -52,7 +52,7 @@ By constructing what I'll call the relative strength model (RS), I show that mot
 
 The question I am trying to answer with this model is 'what is the probability of a bench call, given no information other than the expected points won by government teams, and assuming that the ranking between any pair of teams is independent of the performance of a third?'.[^3]
 
-To simulate a round of debate, the model assigns a performance score to the team in each position, where *RS* is an exogenous and between 0 and 1 (because it is a probability).
+To simulate a round of debate, the model assigns a performance score to the team in each position, where *RS* is exogenous and between 0 and 1 (because it is a probability).
 
 *Performance<sub>OG</sub> ~ N(q,1<sup>2</sup>) where q | Pr(N(q,1<sup>2</sup>) > 0) = RS*
 
